@@ -153,10 +153,32 @@
             align-items: center;
         }
 
-        .about-image {
+        /* WHITE IMAGE BOXES */
+        .image-box {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255,255,255,0.1);
             position: relative;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            font-size: 4rem;
+            color: var(--gray);
+            opacity: 0.3;
+        }
+
+        /* Project Cards */
         .project-card {
             background: #222;
             border-radius: 20px;
@@ -169,10 +191,8 @@
             transform: translateY(-10px);
         }
 
-        .project-card img {
-            width: 100%;
+        .project-card .image-box {
             height: 250px;
-            object-fit: cover;
         }
 
         .project-info {
@@ -233,26 +253,49 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Contact */
+        /* Contact - WHITE TEXT */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
 
+        .contact-info {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255,255,255,0.1);
+        }
+
         .contact-item {
             margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
         .contact-item i {
             color: var(--red);
             font-size: 1.5rem;
-            margin-right: 1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            color: var(--dark);
+            margin: 0;
+            font-size: 1rem;
         }
 
         .contact-form {
             background: #222;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
         }
 
@@ -260,15 +303,26 @@
             margin-bottom: 1.5rem;
         }
 
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 15px 20px;
             background: #333;
-            border: 1px solid #444;
-            border-radius: 10px;
+            border: 2px solid #444;
+            border-radius: 12px;
             color: var(--white);
             font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--red);
         }
 
         .form-group input::placeholder,
@@ -349,16 +403,10 @@
                 <p>Professional Electrical Contractors Serving Erode Since 2008</p>
             </div>
             <div class="about-grid">
-                <div class="about-image">
-                    <div class="project-card">
-                        <div style="background: linear-gradient(45deg, var(--red), #b91c1c); height: 300px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--white);">
-                            🏠
-                        </div>
-                        <div class="project-info">
-                            <h3>Premium Installations</h3>
-                            <p>Complete electrical solutions</p>
-                        </div>
-                    </div>
+                <div class="image-box">
+                    <!-- ADD YOUR IMAGE HERE -->
+                    <!-- <img src="your-image.jpg" alt="About SES"> -->
+                    <div class="image-placeholder">📸<br>Add Your Image Here</div>
                 </div>
                 <div>
                     <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--white);">Certified & Reliable</h3>
@@ -382,42 +430,66 @@
             </div>
             <div class="portfolio-grid">
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, #ff6b6b, var(--red)); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 1 -->
+                        <!-- <img src="project1.jpg" alt="Project 1"> -->
+                        <div class="image-placeholder">🏠<br>Project 1</div>
+                    </div>
                     <div class="project-info">
                         <h3>Luxury Villas</h3>
                         <p>Smart Home Wiring & Automation</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, #4ecdc4, #44a08d); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 2 -->
+                        <!-- <img src="project2.jpg" alt="Project 2"> -->
+                        <div class="image-placeholder">🏢<br>Project 2</div>
+                    </div>
                     <div class="project-info">
                         <h3>Shopping Mall</h3>
                         <p>HVAC & Fire Safety Systems</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, #45b7d1, #96c93d); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 3 -->
+                        <!-- <img src="project3.jpg" alt="Project 3"> -->
+                        <div class="image-placeholder">🏭<br>Project 3</div>
+                    </div>
                     <div class="project-info">
                         <h3>Textile Factory</h3>
                         <p>Industrial Power Distribution</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, var(--red), #ffd93d); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 4 -->
+                        <!-- <img src="project4.jpg" alt="Project 4"> -->
+                        <div class="image-placeholder">☀️<br>Project 4</div>
+                    </div>
                     <div class="project-info">
                         <h3>Solar Projects</h3>
                         <p>100kW Rooftop Installations</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, #f093fb, #f5576c); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 5 -->
+                        <!-- <img src="project5.jpg" alt="Project 5"> -->
+                        <div class="image-placeholder">🏥<br>Project 5</div>
+                    </div>
                     <div class="project-info">
                         <h3>Hospital Complex</h3>
                         <p>Backup Generators & Lighting</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div style="background: linear-gradient(45deg, #4facfe, #00f2fe); height: 200px;"></div>
+                    <div class="image-box">
+                        <!-- ADD YOUR PROJECT IMAGE 6 -->
+                        <!-- <img src="project6.jpg" alt="Project 6"> -->
+                        <div class="image-placeholder">🏢<br>Project 6</div>
+                    </div>
                     <div class="project-info">
                         <h3>Apartment Complex</h3>
                         <p>LT Panels & Lift Wiring</p>
@@ -459,26 +531,34 @@
                 <p>Get Free Quote - 24/7 Emergency Service Available</p>
             </div>
             <div class="contact-grid">
-                <div>
+                <!-- WHITE CONTACT BOX -->
+                <div class="contact-info">
                     <div class="contact-item">
-                        <i style="color: var(--red); font-size: 1.5rem;">📍</i>
+                        <i>📍</i>
                         <div>
-                            <h4>NGGO Colony, Erode</h4>
-                            <p>123 Main Road<br>Erode - 638011, TN</p>
+                            <h4>Visit Us</h4>
+                            <p>123 NGGO Colony<br>Erode - 638011<br>Tamil Nadu, India</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i style="color: var(--red); font-size: 1.5rem;">📞</i>
+                        <i>📞</i>
                         <div>
                             <h4>Call Anytime</h4>
-                            <p>+91 99999 99999</p>
+                            <p>+91 99999 99999<br>+91 88888 88888</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i style="color: var(--red); font-size: 1.5rem;">✉️</i>
+                        <i>✉️</i>
                         <div>
                             <h4>Email Us</h4>
-                            <p>info@seserode.com</p>
+                            <p>info@southernelectrical.in<br>sales@seserode.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon-Sat: 8AM-8PM<br>24/7 Emergency</p>
                         </div>
                     </div>
                 </div>
@@ -492,72 +572,10 @@
                     <div class="form-group">
                         <input type="email" placeholder="Email Address">
                     </div>
-                    <div class="form-group" style="grid-column: 1/-1;">
+                    <div class="form-group full">
                         <textarea placeholder="Describe your electrical project..." required></textarea>
                     </div>
                     <button type="submit" class="cta-btn">Send Enquiry</button>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Southern Electrical Systems Erode</p>
-            <p>Licensed Electrical Contractors | GST: 33ABCDE1234F1Z5</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(17,17,17,0.98)';
-            } else {
-                navbar.style.background = 'rgba(17,17,17,0.95)';
-            }
-        });
-
-        // Fade in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Counter animation (Hero stats)
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / 100;
+            </
                 
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 20);
-                } else {
-                    counter.innerText = target
