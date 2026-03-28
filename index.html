@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SES Erode | Electrical Portfolio</title>
-    <meta name="description" content="Southern Electrical Systems Erode - Professional electrical portfolio">
+    <title>Southern Electrical Systems Erode | Professional Electrical Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,19 +13,12 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --red: #dc2626;
-            --dark: #111;
-            --white: #fff;
-            --gray: #666;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--white);
-            background: var(--dark);
+            color: #333;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -38,25 +32,26 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(17,17,17,0.95);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo {
+        .nav-logo h2 {
+            color: #ff0000;
+            font-weight: 700;
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--red);
-            text-decoration: none;
         }
 
         .nav-menu {
@@ -66,186 +61,263 @@
         }
 
         .nav-link {
-            color: var(--white);
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-link:hover {
-            color: var(--red);
+            color: #ff0000;
         }
 
-        /* Hero */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #ff0000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--dark) 0%, #222 100%);
+            background: linear-gradient(135deg, #000 0%, #ff0000 50%, #000 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--white), var(--red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #fff;
             margin-bottom: 2rem;
-            color: var(--gray);
+            opacity: 0.9;
         }
 
-        .cta-btn {
+        .cta-button {
             display: inline-block;
-            background: var(--red);
-            color: var(--white);
-            padding: 15px 30px;
+            background: #fff;
+            color: #ff0000;
+            padding: 1rem 2.5rem;
             text-decoration: none;
-            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            font-size: 1.1rem;
         }
 
-        .cta-btn:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
         }
 
-        /* Sections */
+        /* Section Styles */
         section {
             padding: 100px 0;
         }
 
-        .section-header {
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
             text-align: center;
             margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .section-header h2 span {
-            color: var(--red);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        /* WHITE IMAGE BOXES */
-        .image-box {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(255,255,255,0.1);
+            color: #000;
             position: relative;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-weight: 700;
         }
 
-        .image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #ff0000;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .image-placeholder {
-            font-size: 4rem;
-            color: var(--gray);
-            opacity: 0.3;
+        /* About Section */
+        .about {
+            background: #fff;
         }
 
-        /* Project Cards */
-        .project-card {
-            background: #222;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
         }
 
-        .project-card:hover {
+        .about-text h3 {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            padding: 2rem;
+            background: #f8f8f8;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .project-card .image-box {
-            height: 250px;
+        .service-item i {
+            font-size: 3rem;
+            color: #ff0000;
+            margin-bottom: 1rem;
+            display: block;
         }
 
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-info h3 {
-            color: var(--white);
+        .service-item h4 {
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
 
-        .project-info p {
-            color: var(--gray);
+        /* Projects Section - WHITE BOXES */
+        .projects {
+            background: #000;
+            padding: 120px 0;
         }
 
-        /* Portfolio */
-        .portfolio-grid {
+        .projects .section-title {
+            color: #fff;
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        /* Clients */
+        .project-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255,0,0,0.2);
+            transition: all 0.4s ease;
+            height: 280px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(255,0,0,0.3);
+        }
+
+        .project-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            color: #fff;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-overlay h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Clients Section */
         .clients {
-            background: #1a1a1a;
+            background: #f8f8f8;
+            padding: 80px 0;
         }
 
         .clients-marquee {
+            display: flex;
             overflow: hidden;
-            padding: 3rem 0;
-        }
-
-        .clients-track {
-            display: flex;
-            animation: marquee 20s linear infinite;
-            gap: 3rem;
-        }
-
-        .client-logo {
-            flex: 0 0 150px;
-            height: 80px;
-            background: #333;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .client-logo:hover {
-            border-color: var(--red);
-            transform: scale(1.05);
+            white-space: nowrap;
+            width: 100%;
+            animation: marquee 25s linear infinite;
         }
 
         @keyframes marquee {
@@ -253,112 +325,171 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Contact - WHITE TEXT */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255,255,255,0.1);
-        }
-
-        .contact-item {
-            margin-bottom: 2rem;
+        .client-logo {
+            height: 100px;
+            width: 180px;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .contact-item i {
-            color: var(--red);
-            font-size: 1.5rem;
-            margin-top: 0.2rem;
+            align-items: center;
+            justify-content: center;
+            margin-right: 4rem;
             flex-shrink: 0;
         }
 
-        .contact-item h4 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+        .client-logo img {
+            max-height: 70px;
+            max-width: 140px;
+            object-fit: contain;
+            filter: grayscale(50%);
+            transition: all 0.3s ease;
+            opacity: 0.8;
         }
 
-        .contact-item p {
-            color: var(--dark);
-            margin: 0;
-            font-size: 1rem;
+        .client-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #ff0000 0%, #000 100%);
+            color: #fff;
+            padding: 120px 0;
+        }
+
+        .contact .section-title {
+            color: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-top: 0.2rem;
+            width: 60px;
+        }
+
+        .contact-item div h4 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item div p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .contact-form {
-            background: #222;
-            padding: 2.5rem;
-            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
-            padding: 15px 20px;
-            background: #333;
-            border: 2px solid #444;
-            border-radius: 12px;
-            color: var(--white);
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.95);
+            font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .contact-form input:focus,
+        .contact-form textarea:focus {
             outline: none;
-            border-color: var(--red);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--gray);
+            box-shadow: 0 0 0 3px rgba(255,0,0,0.3);
+            transform: scale(1.02);
         }
 
         /* Footer */
         .footer {
             background: #000;
+            color: #fff;
             text-align: center;
             padding: 2rem 0;
-            color: var(--gray);
         }
 
-        /* Responsive */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .hamburger {
+                display: flex;
             }
 
-            .hero-content h1 {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(0,0,0,0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-title {
                 font-size: 2.5rem;
             }
 
-            .about-grid,
-            .contact-grid {
+            .about-content,
+            .contact-content {
                 grid-template-columns: 1fr;
             }
 
-            .portfolio-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
-        /* Scroll Animations */
+        /* Scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(50px);
@@ -375,207 +506,102 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">⚡ SES Erode</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#clients" class="nav-link">Clients</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <div class="nav-logo">
+                <h2>SES ERODE</h2>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#clients" class="nav-link">Clients</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Electrical Excellence</h1>
-            <p>15+ Years | 5000+ Projects | 100% Satisfaction</p>
-            <a href="#portfolio" class="cta-btn">View Our Work</a>
+            <h1 class="hero-title">Southern Electrical Systems</h1>
+            <p class="hero-subtitle">Professional Electrical Solutions in Erode</p>
+            <a href="#contact" class="cta-button">Get Quote <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section -->
     <section id="about" class="about fade-in">
         <div class="container">
-            <div class="section-header">
-                <h2>Why Choose <span>SES</span></h2>
-                <p>Professional Electrical Contractors Serving Erode Since 2008</p>
-            </div>
-            <div class="about-grid">
-                <div class="image-box">
-                    <!-- ADD YOUR IMAGE HERE -->
-                    <!-- <img src="your-image.jpg" alt="About SES"> -->
-                    <div class="image-placeholder">📸<br>Add Your Image Here</div>
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Trusted Electrical Experts in Erode</h3>
+                    <p>Southern Electrical Systems delivers top-quality electrical installations, maintenance, and automation solutions across Erode and surrounding areas with over 15+ years of excellence.</p>
                 </div>
-                <div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--white);">Certified & Reliable</h3>
-                    <p style="color: var(--gray); margin-bottom: 2rem; font-size: 1.1rem;">Licensed electricians with 15+ years experience in residential, commercial & industrial projects.</p>
-                    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                        <div><i style="color: var(--red); font-size: 1.5rem;">✅</i> Govt Licensed</div>
-                        <div><i style="color: var(--red); font-size: 1.5rem;">✅</i> 24/7 Service</div>
-                        <div><i style="color: var(--red); font-size: 1.5rem;">✅</i> Safety First</div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Wiring & Installation</h4>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured <span>Projects</span></h2>
-                <p>Our Best Electrical Installations in Erode</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 1 -->
-                        <!-- <img src="project1.jpg" alt="Project 1"> -->
-                        <div class="image-placeholder">🏠<br>Project 1</div>
+                    <div class="service-item">
+                        <i class="fas fa-tools"></i>
+                        <h4>Maintenance Service</h4>
                     </div>
-                    <div class="project-info">
-                        <h3>Luxury Villas</h3>
-                        <p>Smart Home Wiring & Automation</p>
+                    <div class="service-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>LED Lighting</h4>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 2 -->
-                        <!-- <img src="project2.jpg" alt="Project 2"> -->
-                        <div class="image-placeholder">🏢<br>Project 2</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Shopping Mall</h3>
-                        <p>HVAC & Fire Safety Systems</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 3 -->
-                        <!-- <img src="project3.jpg" alt="Project 3"> -->
-                        <div class="image-placeholder">🏭<br>Project 3</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Textile Factory</h3>
-                        <p>Industrial Power Distribution</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 4 -->
-                        <!-- <img src="project4.jpg" alt="Project 4"> -->
-                        <div class="image-placeholder">☀️<br>Project 4</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Solar Projects</h3>
-                        <p>100kW Rooftop Installations</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 5 -->
-                        <!-- <img src="project5.jpg" alt="Project 5"> -->
-                        <div class="image-placeholder">🏥<br>Project 5</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Hospital Complex</h3>
-                        <p>Backup Generators & Lighting</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="image-box">
-                        <!-- ADD YOUR PROJECT IMAGE 6 -->
-                        <!-- <img src="project6.jpg" alt="Project 6"> -->
-                        <div class="image-placeholder">🏢<br>Project 6</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Apartment Complex</h3>
-                        <p>LT Panels & Lift Wiring</p>
+                    <div class="service-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>24/7 Emergency</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Clients -->
-    <section id="clients" class="clients">
+    <!-- Projects Section - WHITE BOXES FOR IMAGES -->
+    <section id="projects" class="projects">
         <div class="container">
-            <div class="section-header">
-                <h2>Trusted By <span>Erode's</span> Best</h2>
-                <p>Our Esteemed Clients & Partners</p>
-            </div>
-            <div class="clients-marquee">
-                <div class="clients-track">
-                    <div class="client-logo">🏢</div>
-                    <div class="client-logo">🏭</div>
-                    <div class="client-logo">🏥</div>
-                    <div class="client-logo">🏠</div>
-                    <div class="client-logo">☀️</div>
-                    <div class="client-logo">🏢</div>
-                    <div class="client-logo">🏭</div>
-                    <div class="client-logo">🏥</div>
-                    <div class="client-logo">🏠</div>
-                    <div class="client-logo">☀️</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>Ready For Your <span>Project?</span></h2>
-                <p>Get Free Quote - 24/7 Emergency Service Available</p>
-            </div>
-            <div class="contact-grid">
-                <!-- WHITE CONTACT BOX -->
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i>📍</i>
-                        <div>
-                            <h4>Visit Us</h4>
-                            <p>123 NGGO Colony<br>Erode - 638011<br>Tamil Nadu, India</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i>📞</i>
-                        <div>
-                            <h4>Call Anytime</h4>
-                            <p>+91 99999 99999<br>+91 88888 88888</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i>✉️</i>
-                        <div>
-                            <h4>Email Us</h4>
-                            <p>info@southernelectrical.in<br>sales@seserode.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i>🕒</i>
-                        <div>
-                            <h4>Working Hours</h4>
-                            <p>Mon-Sat: 8AM-8PM<br>24/7 Emergency</p>
+            <h2 class="section-title">Our Projects</h2>
+            <div class="projects-grid">
+                <!-- REPLACE THESE WITH YOUR PROJECT IMAGES -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=220&fit=crop" alt="Commercial Project" loading="lazy">
+                        <div class="project-overlay">
+                            <h4>Commercial Complex</h4>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name *" required>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=220&fit=crop" alt="Industrial Project" loading="lazy">
+                        <div class="project-overlay">
+                            <h4>Industrial Wiring</h4>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" placeholder="Phone Number *" required>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=220&fit=crop" alt="Residential Project" loading="lazy">
+                        <div class="project-overlay">
+                            <h4>Residential Villa</h4>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email Address">
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=220&fit=crop" alt="Hospital Project" loading="lazy">
+                        <div class="project-overlay">
+                            <h4>Hospital Electrical</h4>
+                        </div>
                     </div>
-                    <div class="form-group full">
-                        <textarea placeholder="Describe your electrical project..." required></textarea>
-                    </div>
-                    <button type="submit" class="cta-btn">Send Enquiry</button>
-                </form>
-            </
-                
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a
