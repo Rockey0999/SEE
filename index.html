@@ -18,174 +18,132 @@ padding:15px 6%;background:#fff;position:sticky;top:0;z-index:1000;
 }
 .logo{font-weight:900;color:#e50914;}
 nav ul{display:flex;gap:20px;list-style:none;}
-nav ul li a{text-decoration:none;color:#111;font-size:14px;}
-.btn{background:#e50914;color:#fff;padding:8px 16px;border:none;cursor:pointer;font-size:14px;}
+nav a{text-decoration:none;color:#111;font-size:14px;}
+.btn{background:#e50914;color:#fff;padding:8px 16px;border:none;cursor:pointer}
+
+/* SECTION BASE */
+section{display:none;padding:60px 6%;}
+section.active{display:block;}
 
 /* HERO */
-.hero{padding:80px 6%;}
-.hero h1{font-size:50px;font-weight:900;line-height:1;}
+.hero h1{font-size:50px;font-weight:900;}
 .hero p{margin:15px 0;color:#555;}
 .buttons{display:flex;gap:10px;flex-wrap:wrap;}
 .btn-outline{border:1px solid #e50914;color:#e50914;background:transparent;padding:8px 16px;}
 
-/* TRUST */
-.trust{text-align:center;padding:50px 0;background:#fff;}
-.logo-slider{overflow:hidden;}
-.logo-track{display:flex;gap:40px;animation:scroll 15s linear infinite;}
-.logo-track span{opacity:0.5;}
-
-@keyframes scroll{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
-}
-
-/* SECTION */
-.section{padding:60px 6%;}
-.section h2{font-size:32px;font-weight:900;}
-
+/* CARDS */
 .cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;margin-top:25px;
+gap:15px;margin-top:20px;
 }
-
-.card{
-background:#fff;padding:20px;border-radius:8px;
-transition:0.3s;
-}
-.card:hover{transform:translateY(-5px);}
+.card{background:#fff;padding:20px;border-radius:8px;}
 .red{background:#e50914;color:#fff;}
 
 /* GALLERY */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;margin-top:20px;
+gap:10px;
 }
 .gallery img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:8px;
+width:100%;height:180px;object-fit:cover;border-radius:8px;
 }
 
 /* CONTACT */
-.contact input,.contact textarea{
-width:100%;padding:10px;margin:10px 0;
-}
+input,textarea{width:100%;padding:10px;margin:10px 0;}
 .contact button{margin-top:10px;}
 
 /* CTA */
-.cta{background:#e50914;color:#fff;text-align:center;padding:60px 6%;}
-.cta h2{font-size:35px;}
-
-/* FOOTER */
-footer{background:#fff;padding:30px 6%;text-align:center;margin-top:20px;}
+.cta{text-align:center;background:#e50914;color:#fff;padding:60px;}
+.cta h2{font-size:30px;}
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:12px 16px;
-border-radius:50px;
-text-decoration:none;
-font-size:14px;
+position:fixed;bottom:20px;right:20px;
+background:#25D366;color:#fff;padding:12px 16px;
+border-radius:50px;text-decoration:none;
 }
-
-/* ANIMATION */
-.reveal{opacity:0;transform:translateY(40px);transition:0.6s;}
-.reveal.active{opacity:1;transform:translateY(0);}
 
 /* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:36px;}
-nav ul{display:none;}
+.hero h1{font-size:34px;}
+nav ul{gap:10px;font-size:12px;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="logo">SOUTHERN</div>
 <ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#services">Expertise</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#" onclick="showPage('home')">Home</a></li>
+<li><a href="#" onclick="showPage('services')">Expertise</a></li>
+<li><a href="#" onclick="showPage('projects')">Projects</a></li>
+<li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+<li><a href="#" onclick="showPage('contact')">Contact</a></li>
 </ul>
-<a href="#contact"><button class="btn">Enquire</button></a>
+<button class="btn" onclick="showPage('contact')">Enquire</button>
 </nav>
 
-<section id="home" class="hero reveal">
+<!-- HOME -->
+<section id="home" class="active hero">
 <p>ESTABLISHED 1998 • ERODE</p>
-<h1>POWER DEFINED.</h1>
-<p>We deliver industrial electrical solutions with precision and reliability.</p>
+<h1>POWER DEFINED</h1>
+<p>Industrial electrical solutions built for reliability.</p>
 
 <div class="buttons">
-<a href="#contact"><button class="btn">Start Project</button></a>
-<a href="#services"><button class="btn-outline">Our Expertise</button></a>
+<button class="btn" onclick="showPage('contact')">Start Project</button>
+<button class="btn-outline" onclick="showPage('services')">Our Expertise</button>
 </div>
-</section>
 
-<section class="trust reveal">
-<h3 style="color:#e50914;margin-bottom:15px;">TRUSTED BY INDUSTRY LEADERS</h3>
-<div class="logo-slider">
-<div class="logo-track">
-<span>Sakthi Sugars</span>
-<span>SPB Paper</span>
-<span>Milky Mist</span>
-<span>KPR Mill</span>
-<span>Eastman</span>
-
-<span>Sakthi Sugars</span>
-<span>SPB Paper</span>
-<span>Milky Mist</span>
-<span>KPR Mill</span>
-<span>Eastman</span>
-</div>
-</div>
-</section>
-
-<section id="services" class="section reveal">
-<h2>ENGINEERED FOR RELIABILITY</h2>
 <div class="cards">
-<div class="card">Safety Protocol Systems</div>
-<div class="card red">Strategic Consultancy</div>
 <div class="card">Energy Auditing</div>
+<div class="card red">Strategic Consultancy</div>
 <div class="card">Panel Design</div>
 </div>
 </section>
 
-<section id="projects" class="section reveal">
-<h2>OUR PROJECTS</h2>
+<!-- SERVICES -->
+<section id="services">
+<h2>OUR EXPERTISE</h2>
 <div class="cards">
-<div class="card">Factory Electrification</div>
-<div class="card">Automation Setup</div>
-<div class="card">Industrial Wiring Systems</div>
+<div class="card">Industrial Electrification</div>
+<div class="card">Automation Systems</div>
+<div class="card">Energy Optimization</div>
 </div>
 </section>
 
-<section id="gallery" class="section reveal">
-<h2>PROJECT GALLERY</h2>
+<!-- PROJECTS -->
+<section id="projects">
+<h2>PROJECTS</h2>
+<div class="cards">
+<div class="card">Factory Electrification</div>
+<div class="card">Automation Setup</div>
+<div class="card">Electrical Infrastructure</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h2>GALLERY</h2>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1581091215367-59ab6b3a5c8f?auto=format&fit=crop&w=800&q=60">
 <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60">
+<img src="https://images.unsplash.com/photo-1581091215367-59ab6b3a5c8f?auto=format&fit=crop&w=800&q=60">
 <img src="https://images.unsplash.com/photo-1581093588401-12b8c5a3f4b1?auto=format&fit=crop&w=800&q=60">
 <img src="https://images.unsplash.com/photo-1581092919535-3b0c1f63c1d0?auto=format&fit=crop&w=800&q=60">
 </div>
 </section>
 
-<section id="contact" class="section contact reveal">
+<!-- CONTACT -->
+<section id="contact" class="contact">
 <h2>CONTACT US</h2>
 
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
-<textarea placeholder="Your Requirement"></textarea>
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Requirement"></textarea>
 
 <button class="btn">Send Message</button>
 
@@ -196,30 +154,23 @@ nav ul{display:none;}
 </a>
 </section>
 
-<section class="cta reveal">
+<!-- CTA -->
+<section class="cta active">
 <h2>POWER YOUR BUSINESS</h2>
-<p>Let’s build something strong together.</p>
+<p>Let’s build something strong.</p>
 </section>
 
-<footer>
-<p>© 2026 Southern Electrical Systems</p>
-</footer>
-
+<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/919876543210" target="_blank" class="whatsapp">Chat</a>
 
 <script>
-const reveals=document.querySelectorAll(".reveal");
-
-function runReveal(){
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight - 80){
-el.classList.add("active");
-}
+function showPage(pageId){
+document.querySelectorAll("section").forEach(sec=>{
+sec.classList.remove("active");
 });
+document.getElementById(pageId).classList.add("active");
+window.scrollTo(0,0);
 }
-
-window.addEventListener("scroll", runReveal);
-window.addEventListener("load", runReveal);
 </script>
 
 </body>
