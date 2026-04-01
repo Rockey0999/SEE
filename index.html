@@ -9,34 +9,30 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{background:#f6f6f6;color:#111;overflow-x:hidden}
+body{background:#f6f6f6;color:#111;scroll-behavior:smooth}
 
 /* NAV */
 nav{
 display:flex;justify-content:space-between;align-items:center;
-padding:20px 8%;background:#fff;position:sticky;top:0;z-index:1000;
+padding:15px 6%;background:#fff;position:sticky;top:0;z-index:1000;
 }
 .logo{font-weight:900;color:#e50914;}
-nav ul{display:flex;gap:30px;list-style:none;}
-nav ul li{font-size:14px;cursor:pointer;}
-.btn{background:#e50914;color:#fff;padding:10px 20px;border:none;cursor:pointer;}
+nav ul{display:flex;gap:20px;list-style:none;}
+nav ul li a{text-decoration:none;color:#111;font-size:14px;}
+.btn{background:#e50914;color:#fff;padding:8px 16px;border:none;cursor:pointer;font-size:14px;}
 
 /* HERO */
-.hero{padding:100px 8%;}
-.hero h1{font-size:70px;font-weight:900;line-height:1;}
-.hero p{margin:20px 0;color:#555;max-width:500px;}
-.buttons{display:flex;gap:15px;}
-.btn-outline{border:1px solid #e50914;color:#e50914;background:transparent;padding:10px 20px;}
+.hero{padding:80px 6%;}
+.hero h1{font-size:50px;font-weight:900;line-height:1;}
+.hero p{margin:15px 0;color:#555;}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-outline{border:1px solid #e50914;color:#e50914;background:transparent;padding:8px 16px;}
 
-/* TRUST ROLLING */
-.trust{text-align:center;padding:60px 0;background:#fff;}
-.logo-slider{overflow:hidden;width:100%;}
-.logo-track{
-display:flex;gap:60px;
-animation:scroll 18s linear infinite;
-}
-.logo-track span{white-space:nowrap;font-weight:600;opacity:0.5;}
+/* TRUST */
+.trust{text-align:center;padding:50px 0;background:#fff;}
+.logo-slider{overflow:hidden;}
+.logo-track{display:flex;gap:40px;animation:scroll 15s linear infinite;}
+.logo-track span{opacity:0.5;}
 
 @keyframes scroll{
 0%{transform:translateX(0);}
@@ -44,59 +40,69 @@ animation:scroll 18s linear infinite;
 }
 
 /* SECTION */
-.section{padding:80px 8%;}
-.section h2{font-size:50px;font-weight:900;}
+.section{padding:60px 6%;}
+.section h2{font-size:32px;font-weight:900;}
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;margin-top:40px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;margin-top:25px;
 }
 
 .card{
-background:#fff;padding:30px;border-radius:8px;
+background:#fff;padding:20px;border-radius:8px;
 transition:0.3s;
 }
-
-.card:hover{
-transform:translateY(-5px);
-}
-
+.card:hover{transform:translateY(-5px);}
 .red{background:#e50914;color:#fff;}
 
-/* STATS */
-.stats{display:flex;gap:20px;margin-top:30px;flex-wrap:wrap;}
-.stat{background:#fff;padding:20px;font-weight:600;}
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:10px;margin-top:20px;
+}
+.gallery img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+}
+
+/* CONTACT */
+.contact input,.contact textarea{
+width:100%;padding:10px;margin:10px 0;
+}
+.contact button{margin-top:10px;}
 
 /* CTA */
-.cta{
-background:#e50914;color:#fff;text-align:center;
-padding:100px 8%;
-}
-.cta h2{font-size:60px;font-weight:900;}
-.cta button{
-margin-top:20px;background:#fff;color:#e50914;
-padding:12px 30px;border:none;
-}
+.cta{background:#e50914;color:#fff;text-align:center;padding:60px 6%;}
+.cta h2{font-size:35px;}
 
 /* FOOTER */
-footer{
-background:#fff;padding:50px 8%;
-display:flex;justify-content:space-between;
-flex-wrap:wrap;gap:30px;
+footer{background:#fff;padding:30px 6%;text-align:center;margin-top:20px;}
+
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:12px 16px;
+border-radius:50px;
+text-decoration:none;
+font-size:14px;
 }
 
-small{text-align:center;display:block;padding:20px;color:#777;}
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:0.6s;}
+.reveal.active{opacity:1;transform:translateY(0);}
 
-/* SCROLL ANIMATION */
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:all 0.6s ease;
-}
-.reveal.active{
-opacity:1;
-transform:translateY(0);
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:36px;}
+nav ul{display:none;}
 }
 </style>
 </head>
@@ -106,28 +112,28 @@ transform:translateY(0);
 <nav>
 <div class="logo">SOUTHERN</div>
 <ul>
-<li>Home</li>
-<li>Expertise</li>
-<li>Projects</li>
-<li>Contact</li>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Expertise</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
-<button class="btn">Enquire</button>
+<a href="#contact"><button class="btn">Enquire</button></a>
 </nav>
 
-<section class="hero reveal">
+<section id="home" class="hero reveal">
 <p>ESTABLISHED 1998 • ERODE</p>
-<h1>POWER<br>DEFINED.</h1>
-<p>High-precision electrical contracting and consultancy for industries.</p>
+<h1>POWER DEFINED.</h1>
+<p>We deliver industrial electrical solutions with precision and reliability.</p>
 
 <div class="buttons">
-<button class="btn">Start Project</button>
-<button class="btn-outline">Our Expertise</button>
+<a href="#contact"><button class="btn">Start Project</button></a>
+<a href="#services"><button class="btn-outline">Our Expertise</button></a>
 </div>
 </section>
 
 <section class="trust reveal">
-<h3 style="color:#e50914;margin-bottom:20px;">TRUSTED BY INDUSTRY LEADERS</h3>
-
+<h3 style="color:#e50914;margin-bottom:15px;">TRUSTED BY INDUSTRY LEADERS</h3>
 <div class="logo-slider">
 <div class="logo-track">
 <span>Sakthi Sugars</span>
@@ -145,94 +151,75 @@ transform:translateY(0);
 </div>
 </section>
 
-<section class="section reveal">
+<section id="services" class="section reveal">
 <h2>ENGINEERED FOR RELIABILITY</h2>
-
 <div class="cards">
-<div class="card">
-<h4>Safety Protocol</h4>
-<p>Industrial safety with zero-risk systems.</p>
-</div>
-
-<div class="card red">
-<h4>Strategic Consultancy</h4>
-<p>Optimize energy and reduce operational cost.</p>
-</div>
-
-<div class="card">
-<h4>Energy Auditing</h4>
-<p>Detect inefficiencies and save power.</p>
-</div>
-
-<div class="card">
-<h4>Panel Design</h4>
-<p>Custom-built electrical panels.</p>
-</div>
+<div class="card">Safety Protocol Systems</div>
+<div class="card red">Strategic Consultancy</div>
+<div class="card">Energy Auditing</div>
+<div class="card">Panel Design</div>
 </div>
 </section>
 
-<section class="section reveal">
-<h2>END-TO-END INDUSTRIAL ELECTRIFICATION</h2>
-<p>From design to execution, complete lifecycle handled.</p>
-
-<div class="stats">
-<div class="stat">500+ Projects</div>
-<div class="stat">100% Safety Record</div>
+<section id="projects" class="section reveal">
+<h2>OUR PROJECTS</h2>
+<div class="cards">
+<div class="card">Factory Electrification</div>
+<div class="card">Automation Setup</div>
+<div class="card">Industrial Wiring Systems</div>
 </div>
 </section>
 
-<section class="section reveal">
-<h2 style="color:#e50914;">THE DATA BEHIND THE POWER</h2>
-
-<div class="cards">
-<div class="card">Voltage Regulation ±0.5%</div>
-<div class="card">Response Time < 24 Hours</div>
-<div class="card">Efficiency 99.8%</div>
+<section id="gallery" class="section reveal">
+<h2>PROJECT GALLERY</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1581091215367-59ab6b3a5c8f?auto=format&fit=crop&w=800&q=60">
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60">
+<img src="https://images.unsplash.com/photo-1581093588401-12b8c5a3f4b1?auto=format&fit=crop&w=800&q=60">
+<img src="https://images.unsplash.com/photo-1581092919535-3b0c1f63c1d0?auto=format&fit=crop&w=800&q=60">
 </div>
+</section>
+
+<section id="contact" class="section contact reveal">
+<h2>CONTACT US</h2>
+
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Your Requirement"></textarea>
+
+<button class="btn">Send Message</button>
+
+<br><br>
+
+<a href="https://wa.me/919876543210" target="_blank">
+<button class="btn">Chat on WhatsApp</button>
+</a>
 </section>
 
 <section class="cta reveal">
-<h2>POWER YOUR VISION</h2>
-<p>Build a strong electrical foundation for your business.</p>
-<button>Get Started</button>
+<h2>POWER YOUR BUSINESS</h2>
+<p>Let’s build something strong together.</p>
 </section>
 
 <footer>
-<div>
-<h4>SOUTHERN</h4>
-<p>Erode’s leading electrical contractor.</p>
-</div>
-
-<div>
-<h4>Contact</h4>
-<p>+91 98765 43210</p>
-<p>info@southern.com</p>
-</div>
-
-<div>
-<h4>Links</h4>
-<p>Home</p>
-<p>Services</p>
-<p>Contact</p>
-</div>
+<p>© 2026 Southern Electrical Systems</p>
 </footer>
 
-<small>© 2026 Southern Electrical Systems</small>
+<a href="https://wa.me/919876543210" target="_blank" class="whatsapp">Chat</a>
 
 <script>
-const reveals = document.querySelectorAll(".reveal");
+const reveals=document.querySelectorAll(".reveal");
 
-function revealOnScroll(){
+function runReveal(){
 reveals.forEach(el=>{
-const top = el.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
+if(el.getBoundingClientRect().top < window.innerHeight - 80){
 el.classList.add("active");
 }
 });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+window.addEventListener("scroll", runReveal);
+window.addEventListener("load", runReveal);
 </script>
 
 </body>
