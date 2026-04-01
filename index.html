@@ -1,291 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Southern Electrical Systems | Erode</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- React, ReactDOM, Babel, Router, and Motion CDNs -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/react-router-dom@6.22.3/dist/umd/react-router-dom.production.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    
-    <!-- Lucide Icons (Vanilla JS version for better compatibility) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Southern Electrical Systems | Erode</title><script src="https://cdn.tailwindcss.com"></script><script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><script src="https://unpkg.com/react-router-dom@6.22.3/dist/umd/react-router-dom.production.min.js"></script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Space+Grotesk:wght@400;700&family=Anton&display=swap" rel="stylesheet"><style>
+body { margin:0; font-family: 'Inter', sans-serif; background:white; }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;600;900&family=JetBrains+Mono&family=Anton&display=swap" rel="stylesheet">
+.text-stroke {
+ -webkit-text-stroke: 1px black;
+ color: transparent;
+}
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                        impact: ['Anton', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            red: '#E31E24',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+.btn-primary {
+ padding:14px 32px;background:#E31E24;color:#fff;font-weight:bold;
+ text-transform:uppercase;font-size:10px;letter-spacing:2px;
+}
 
-    <style type="text/css">
-        body { margin: 0; font-family: 'Inter', sans-serif; background: white; color: black; }
-        .text-stroke { -webkit-text-stroke: 1px currentColor; color: transparent; }
-        .vertical-rl { writing-mode: vertical-rl; }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee { display: flex; animation: marquee 30s linear infinite; }
+.btn-outline {
+ padding:14px 32px;border:1px solid #E31E24;color:#E31E24;
+ font-weight:bold;text-transform:uppercase;font-size:10px;letter-spacing:2px;
+}
 
-        .btn-primary { @apply inline-flex items-center justify-center px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-widest text-[10px] transition-all hover:bg-zinc-900 shadow-lg; }
-        .btn-outline { @apply inline-flex items-center justify-center px-8 py-4 border border-brand-red text-brand-red font-bold uppercase tracking-widest text-[10px] transition-all hover:bg-brand-red hover:text-white; }
-        
-        /* Fix for Lucide icons in single file */
-        .lucide { width: 1.2em; height: 1.2em; stroke-width: 2px; }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
+.marquee {
+ display:flex;
+ animation: scroll 20s linear infinite;
+}
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-        const { HashRouter, Routes, Route, Link, useLocation } = ReactRouterDOM;
-        const { motion, AnimatePresence } = FramerMotion;
+@keyframes scroll {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(-50%); }
+}
+</style></head><body>
+<div id="root"></div><script type="text/babel">
+const { HashRouter, Routes, Route, Link } = ReactRouterDOM;
 
-        // --- Helper: Icon Component ---
-        const Icon = ({ name, className = "" }) => {
-            const iconRef = useRef(null);
-            useEffect(() => {
-                if (window.lucide) {
-                    window.lucide.createIcons();
-                }
-            }, [name]);
-            return <i data-lucide={name} className={`lucide ${className}`}></i>;
-        };
+const Navbar = () => (
+ <nav className="fixed w-full z-50 bg-white/90 backdrop-blur border-b">
+  <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div>
+      <div className="font-black text-red-600 text-2xl tracking-tight">Southern</div>
+      <div className="text-[9px] tracking-[0.3em] text-red-600">ELECTRICAL SYSTEMS</div>
+    </div>
+    <div className="hidden md:flex gap-8 text-xs font-bold tracking-widest">
+      <Link to="/">Home</Link>
+      <Link to="/expertise">Expertise</Link>
+      <Link to="/gallery">Projects</Link>
+      <Link to="/contact">Contact</Link>
+    </div>
+  </div>
+ </nav>
+);
 
-        // --- Layout Components ---
+const Home = () => (
+ <div className="pt-24">
+  <section className="min-h-screen flex items-center px-6">
+   <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 className="text-7xl font-black leading-none mb-8">
+        Power <br />
+        <span className="text-stroke">Systems</span><br />
+        Defined.
+      </h1>
+      <p className="text-gray-500 mb-8 max-w-md">
+        High-precision electrical contracting for industrial projects.
+      </p>
+      <div className="flex gap-4">
+        <Link to="/contact" className="btn-primary">Start Project</Link>
+        <Link to="/expertise" className="btn-outline">Expertise</Link>
+      </div>
+    </div>
 
-        const Navbar = () => {
-            const [scrolled, setScrolled] = useState(false);
-            const location = useLocation();
+    <div>
+      <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e" className="rounded shadow-xl grayscale" />
+    </div>
+   </div>
+  </section>
 
-            useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+  <div className="bg-red-600 py-4 overflow-hidden">
+    <div className="marquee text-white text-xs tracking-widest">
+      {Array(20).fill("HT INSTALLATION • TRANSFORMER • AUTOMATION • ").map((t,i)=>(<span key={i}>{t}</span>))}
+    </div>
+  </div>
 
-            return (
-                <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "py-2 bg-white/90 backdrop-blur-md border-b border-zinc-100" : "py-6 bg-transparent"}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <Link to="/" className="flex flex-col">
-                            <span className="font-impact text-2xl uppercase tracking-tighter leading-none text-brand-red">Southern</span>
-                            <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-brand-red font-bold">Electrical Systems</span>
-                        </Link>
-                        <div className="hidden md:flex items-center space-x-8">
-                            {['Home', 'Expertise', 'Projects', 'Contact'].map((item) => (
-                                <Link 
-                                    key={item} 
-                                    to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
-                                    className={`text-[10px] font-mono font-bold uppercase tracking-widest transition-colors ${location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? "text-brand-red" : "text-zinc-400 hover:text-brand-red"}`}
-                                >
-                                    {item}
-                                </Link>
-                            ))}
-                            <Link to="/contact" className="btn-primary py-2 px-6">Enquire</Link>
-                        </div>
-                    </div>
-                </nav>
-            );
-        };
+  <section className="py-24 px-6">
+    <div className="max-w-7xl mx-auto">
+      <h2 className="text-6xl font-black mb-16">Engineered Reliability</h2>
+      <div className="grid md:grid-cols-3 gap-8">
 
-        const Footer = () => (
-            <footer className="bg-white text-zinc-900 pt-20 pb-10 border-t border-zinc-100">
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div>
-                        <h2 className="font-impact text-2xl text-brand-red uppercase mb-4">Southern Electrical</h2>
-                        <p className="text-zinc-500 text-sm leading-relaxed">Erode's leading industrial electrical specialists since 1998.</p>
-                    </div>
-                    <div>
-                        <h3 className="text-xs font-bold uppercase tracking-widest text-brand-red mb-6">Contact</h3>
-                        <div className="space-y-4 text-sm text-zinc-600">
-                            <p className="flex items-center gap-3"><Icon name="map-pin" className="text-brand-red" /> Erode, Tamil Nadu</p>
-                            <p className="flex items-center gap-3"><Icon name="phone" className="text-brand-red" /> +91 98765 43210</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-xs font-bold uppercase tracking-widest text-brand-red mb-6">Links</h3>
-                        <div className="flex flex-col space-y-2 text-sm text-zinc-600">
-                            <Link to="/" className="hover:text-brand-red">Home</Link>
-                            <Link to="/gallery" className="hover:text-brand-red">Gallery</Link>
-                            <Link to="/contact" className="hover:text-brand-red">Contact</Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        );
+        <div className="p-8 border hover:border-red-600">
+          <h3 className="text-2xl font-bold mb-4">HT Installation</h3>
+          <p className="text-gray-500">11kV / 22kV systems, transformers, panels.</p>
+        </div>
 
-        // --- Page Components ---
+        <div className="p-8 border hover:border-red-600">
+          <h3 className="text-2xl font-bold mb-4">Energy Audit</h3>
+          <p className="text-gray-500">Reduce power loss and optimize efficiency.</p>
+        </div>
 
-        const Home = () => (
-            <div className="pt-20">
-                {/* Hero */}
-                <section className="min-h-screen flex items-center px-6">
-                    <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <span className="section-label">Established 1998 • Erode</span>
-                            <h1 className="text-7xl md:text-8xl font-impact uppercase leading-none mb-8">
-                                Power <br />
-                                <span className="text-brand-red text-stroke">Systems</span> <br />
-                                Defined.
-                            </h1>
-                            <p className="text-lg text-zinc-500 mb-10 max-w-md">High-precision electrical contracting for Erode's industrial giants.</p>
-                            <div className="flex gap-4">
-                                <Link to="/contact" className="btn-primary">Start Project</Link>
-                                <Link to="/expertise" className="btn-outline">Expertise</Link>
-                            </div>
-                        </motion.div>
-                        <div className="hidden lg:block relative">
-                            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800" className="w-full grayscale rounded-lg shadow-2xl" />
-                            <div className="absolute -bottom-10 -left-10 bg-brand-red p-8 text-white shadow-2xl">
-                                <div className="text-4xl font-impact">25+</div>
-                                <div className="text-[10px] font-mono uppercase tracking-widest">Years Experience</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <div className="p-8 border hover:border-red-600">
+          <h3 className="text-2xl font-bold mb-4">Automation</h3>
+          <p className="text-gray-500">PLC panels and smart industrial control.</p>
+        </div>
 
-                {/* Marquee */}
-                <div className="bg-brand-red py-6 overflow-hidden">
-                    <div className="animate-marquee">
-                        {[...Array(20)].map((_, i) => (
-                            <div key={i} className="flex items-center gap-8 mx-4">
-                                <span className="text-white/50 font-mono text-[10px] uppercase tracking-widest">HT_INSTALLATION</span>
-                                <div className="w-1 h-1 bg-white rounded-full"></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+      </div>
+    </div>
+  </section>
+ </div>
+);
 
-                {/* Features */}
-                <section className="py-32 px-6">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="mb-20">
-                            <span className="section-label">Capabilities</span>
-                            <h2 className="text-5xl md:text-7xl font-impact uppercase">Engineered Reliability</h2>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { title: "HT Installation", icon: "zap", desc: "High-tension infrastructure for industrial powerhouses." },
-                                { title: "Energy Audit", icon: "activity", desc: "Strategic optimization to reduce operational overheads." },
-                                { title: "Automation", icon: "cpu", desc: "Smart control systems for modern manufacturing." }
-                            ].map((item, i) => (
-                                <div key={i} className="p-10 border border-zinc-100 hover:border-brand-red transition-colors group">
-                                    <Icon name={item.icon} className="text-brand-red mb-6 h-8 w-8" />
-                                    <h3 className="text-2xl font-impact uppercase mb-4">{item.title}</h3>
-                                    <p className="text-zinc-500 text-sm">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            </div>
-        );
+const Expertise = () => (
+ <div className="pt-32 px-6">
+  <h1 className="text-6xl font-black mb-6">Our Expertise</h1>
+  <p className="text-gray-500 max-w-xl">Textile mills, factories, and industrial setups across Tamil Nadu.</p>
+ </div>
+);
 
-        const Expertise = () => (
-            <div className="pt-40 px-6 min-h-screen">
-                <div className="max-w-7xl mx-auto">
-                    <span className="section-label">Technical Specs</span>
-                    <h1 className="text-6xl font-impact uppercase mb-10">Our Expertise</h1>
-                    <p className="text-zinc-500 max-w-2xl">Detailed engineering solutions for the textile and manufacturing sectors of Tamil Nadu.</p>
-                </div>
-            </div>
-        );
+const Gallery = () => (
+ <div className="pt-32 px-6">
+  <h1 className="text-6xl font-black mb-10">Projects</h1>
+  <div className="grid md:grid-cols-3 gap-4">
+    {[1,2,3,4,5,6].map(i => (
+      <img key={i} src={`https://picsum.photos/seed/${i}/500`} className="grayscale hover:grayscale-0 transition" />
+    ))}
+  </div>
+ </div>
+);
 
-        const Gallery = () => (
-            <div className="pt-40 px-6 min-h-screen">
-                <div className="max-w-7xl mx-auto">
-                    <span className="section-label">Portfolio</span>
-                    <h1 className="text-6xl font-impact uppercase mb-10">Proven Excellence</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {[1,2,3,4,5,6].map(i => (
-                            <div key={i} className="aspect-square bg-zinc-100 grayscale hover:grayscale-0 transition-all cursor-pointer overflow-hidden">
-                                <img src={`https://picsum.photos/seed/${i+10}/600/600`} className="w-full h-full object-cover" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
+const Contact = () => (
+ <div className="pt-32 px-6">
+  <h1 className="text-6xl font-black mb-6">Contact</h1>
+  <p className="mb-2">Phone: +91 XXXXX XXXXX</p>
+  <p className="mb-6">Email: info@southernelectrical.in</p>
 
-        const Contact = () => (
-            <div className="pt-40 px-6 min-h-screen">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
-                    <div>
-                        <span className="section-label">Contact</span>
-                        <h1 className="text-6xl font-impact uppercase mb-8">Let's Connect</h1>
-                        <p className="text-zinc-500 mb-10">Ready to power your next industrial project?</p>
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-4 p-6 bg-zinc-50 border-l-4 border-brand-red">
-                                <Icon name="mail" className="text-brand-red" />
-                                <span className="font-bold uppercase text-xs tracking-widest">info@southernelectrical.in</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-white p-10 shadow-2xl border border-zinc-100">
-                        <form className="space-y-6" onSubmit={e => e.preventDefault()}>
-                            <input type="text" placeholder="Full Name" className="w-full p-4 bg-zinc-50 border-b border-zinc-200 focus:outline-none focus:border-brand-red" />
-                            <textarea placeholder="Message" rows="4" className="w-full p-4 bg-zinc-50 border-b border-zinc-200 focus:outline-none focus:border-brand-red"></textarea>
-                            <button className="btn-primary w-full">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        );
+  <a href="https://wa.me/919876543210" className="btn-primary">WhatsApp Now</a>
+ </div>
+);
 
-        // --- Main App ---
+const Footer = () => (
+ <footer className="border-t mt-20 py-10 text-center">
+  <p className="text-gray-500">© Southern Electrical Systems</p>
+ </footer>
+);
 
-        const App = () => {
-            const { pathname } = useLocation();
-            useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+const App = () => (
+ <HashRouter>
+  <Navbar />
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/expertise" element={<Expertise />} />
+    <Route path="/gallery" element={<Gallery />} />
+    <Route path="/contact" element={<Contact />} />
+  </Routes>
+  <Footer />
+ </HashRouter>
+);
 
-            return (
-                <div className="flex flex-col min-h-screen">
-                    <Navbar />
-                    <main className="flex-grow">
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/expertise" element={<Expertise />} />
-                            <Route path="/gallery" element={<Gallery />} />
-                            <Route path="/contact" element={<Contact />} />
-                        </Routes>
-                    </main>
-                    <Footer />
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(
-            <HashRouter>
-                <App />
-            </HashRouter>
-        );
-    </script>
-</body>
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script></body>
 </html>
